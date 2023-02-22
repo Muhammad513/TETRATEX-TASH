@@ -1,19 +1,27 @@
-(function($) {
-
+(function () {
 	"use strict";
 
-	var fullHeight = function() {
+	var treeviewMenu = $('.app-menu');
 
-		$('.js-fullheight').css('height', $(window).height());
-		$(window).resize(function(){
-			$('.js-fullheight').css('height', $(window).height());
-		});
+	// Toggle Sidebar
+	$('[data-toggle="sidebar"]').click(function(event) {
+		event.preventDefault();
+		$('.app').toggleClass('sidenav-toggled');
+	});
 
-	};
-	fullHeight();
+	// Activate sidebar treeview toggle
+	$("[data-toggle='treeview']").click(function(event) {
+		event.preventDefault();
+		if(!$(this).parent().hasClass('is-expanded')) {
+			treeviewMenu.find("[data-toggle='treeview']").parent().removeClass('is-expanded');
+		}
+		$(this).parent().toggleClass('is-expanded');
+	});
 
-	$('#sidebarCollapse').on('click', function () {
-      $('#sidebar').toggleClass('active');
-  });
+	// Set initial active toggle
+	$("[data-toggle='treeview.'].is-expanded").parent().toggleClass('is-expanded');
 
-})(jQuery);
+	//Activate bootstrip tooltips
+	$("[data-toggle='tooltip']").tooltip();
+
+})();
