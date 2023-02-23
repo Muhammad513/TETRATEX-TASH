@@ -11,7 +11,7 @@ def reestr(request):
     print(s)
 
 
-    rees=Tashish.objects.all().order_by('-date').values('date','nak_num','transport__rusum','transport__tr_num','sofVazn','partiya__partiya',"ifloslik",'namlik','xisobiy','kond',"imzo")
+    rees=Tashish.objects.filter.order_by('-date').values('date','nak_num','transport__rusum','transport__tr_num','sofVazn','partiya__partiya',"ifloslik",'namlik','xisobiy','kond',"imzo")
     user=request.user.profile
 
     context={'rees':rees,'user':user}
