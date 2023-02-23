@@ -64,6 +64,7 @@ class Transport(models.Model):
 
 
 class Tashish(models.Model):
+    ptm=models.ForeignKey('Punkt',on_delete=models.SET_NULL,null=True)
     date=models.DateField(auto_now=True)
     nak_num=models.CharField(max_length=20,verbose_name='Накладной раками')
     transport=models.ForeignKey('Transport',on_delete=models.SET_NULL,verbose_name='Транспортни танланг',null=True)
@@ -74,6 +75,7 @@ class Tashish(models.Model):
     xisobiy=models.FloatField(blank=True,verbose_name='Хисобий Вазни')
     kond=models.FloatField(blank=True,verbose_name='Кондицион Вазни')
     imzo=models.BooleanField(default=False)
+    
     class Meta:
         verbose_name_plural = "ПАХТАНИ ТАШИШ"
     
