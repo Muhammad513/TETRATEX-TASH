@@ -41,6 +41,7 @@ class Partiya(models.Model):
 
 class Firma(models.Model):
     name=models.CharField(max_length=20,verbose_name='Фирма номи',help_text="М: AGRMOMAX MCHJ")
+    s=models
 
     def __str__(self):
         return str(self.name)

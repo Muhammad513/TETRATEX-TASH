@@ -2,13 +2,19 @@ from django.shortcuts import render
 from .models import Tashish
 # Create your views here.
 def home(request):
-    return render(request,'docs/dashboard.html')
+    user=request.user.profile
+    context={'user':user}
+    return render(request,'docs/dashboard.html',context)
 
 def reestr(request):
-    rees=Tashish.objects.all().order_by('-date').values('date','nak_num','transport__rusum','transport__tr_num','sofVazn','partiya__partiya',"ifloslik",'namlik','xisobiy','kond',"imzo")
-    print(rees)
+    s=request.user.punkt.id
+    print(s)
 
-    context={'rees':rees}
+
+    rees=Tashish.objects.all().order_by('-date').values('date','nak_num','transport__rusum','transport__tr_num','sofVazn','partiya__partiya',"ifloslik",'namlik','xisobiy','kond',"imzo")
+    user=request.user.profile
+
+    context={'rees':rees,'user':user}
 
 
     return render(request,'tashish/reestr.html',context)
