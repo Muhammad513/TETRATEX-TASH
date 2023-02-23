@@ -6,23 +6,25 @@ class Punkt(models.Model):
     name=models.CharField(max_length=20)
     bux=models.OneToOneField(User,on_delete=models.CASCADE)
 
+    class Meta:
+        verbose_name_plural = "Пахта тозалаш масканлари"    
+
 
     def __str__(self):
         return str(self.name)
 
 
 class Partiya(models.Model):
-    xosil=models.CharField(max_length=4)
-    partiya=models.CharField(max_length=7)
-    bunt=models.CharField(max_length=20)
-    nav=models.CharField(max_length=30)
-    sort=models.CharField(max_length=1)
-    snif=models.CharField(max_length=1)
-    sofVazn=models.FloatField()
-    xisobiy=models.FloatField()
-    kond=models.FloatField()
-    ifloslik=models.FloatField(blank=True)
-    namlik=models.FloatField(blank=True)
+    partiya=models.CharField(max_length=7,verbose_name='ПАРТИЯ РАКАМИ')
+    bunt=models.CharField(max_length=20,verbose_name='Жой РАКАМИ')
+    nav=models.CharField(max_length=30,verbose_name='Селекцион Нав',help_text='Анд-35,Анд-36,Шарк')
+    sort=models.CharField(max_length=1,verbose_name='Пахтанинг Сорти')
+    snif=models.CharField(max_length=1,verbose_name='Пахтанинг снифи')
+    sofVazn=models.FloatField(verbose_name='Соф вазни')
+    xisobiy=models.FloatField(verbose_name='Хисобий вазни')
+    kond=models.FloatField(verbose_name='Кондицион вазни')
+    ifloslik=models.FloatField(blank=True,verbose_name='Ифлослиги')
+    namlik=models.FloatField(blank=True,verbose_name='Намлиги')
 
 
     def save(self,*args,**kwargs):
@@ -30,19 +32,30 @@ class Partiya(models.Model):
         self.namlik=round(((self.xisobiy*109)/self.kond)-100,1)
         super().save(*args,**kwargs)
 
+
+    class Meta:
+        verbose_name_plural = "Партиялар очиш"    
+
     def __str__(self):
         return str(self.partiya)    
 
 class Firma(models.Model):
-    name=models.CharField(max_length=20)
+    name=models.CharField(max_length=20,verbose_name='Фирма номи',help_text="М: AGRMOMAX MCHJ")
 
     def __str__(self):
         return str(self.name)
 
+    class Meta:
+        verbose_name_plural = "Ташувчи Фирмалар"    
+
 class Transport(models.Model):
-    firma=models.ForeignKey('Firma',on_delete=models.CASCADE)
-    rusum=models.CharField(max_length=20)
-    tr_num=models.CharField(max_length=20)
+    firma=models.ForeignKey('Firma',on_delete=models.PROTECT,verbose_name='Фирма')
+    rusum=models.CharField(max_length=20,verbose_name='Транспорт маркаси')
+    tr_num=models.CharField(max_length=20,verbose_name='Транспорт раками')
+    
+
+    class Meta:
+        verbose_name_plural = "Т/Р руйхатдан утказиш"
     
     def __str__(self):
         return str(self.tr_num)
@@ -51,16 +64,17 @@ class Transport(models.Model):
 
 class Tashish(models.Model):
     date=models.DateField(auto_now=True)
-    nak_num=models.CharField(max_length=20)
-    transport=models.ForeignKey('Transport',on_delete=models.CASCADE)
-    sofVazn=models.FloatField()
-    partiya=models.ForeignKey("Partiya",on_delete=models.CASCADE)
-    ifloslik=models.FloatField()
-    namlik=models.FloatField()
-    xisobiy=models.FloatField(blank=True)
-    kond=models.FloatField(blank=True)
-    
-
+    nak_num=models.CharField(max_length=20,verbose_name='Накладной раками')
+    transport=models.ForeignKey('Transport',on_delete=models.SET_NULL,verbose_name='Транспортни танланг',null=True)
+    sofVazn=models.FloatField(verbose_name='Соф Вазни')
+    partiya=models.ForeignKey("Partiya",on_delete=models.SET_NULL,verbose_name='Партия раками',null=True)
+    ifloslik=models.FloatField(verbose_name='Ифлослиги')
+    namlik=models.FloatField(verbose_name='Намлиги')
+    xisobiy=models.FloatField(blank=True,verbose_name='Хисобий Вазни')
+    kond=models.FloatField(blank=True,verbose_name='Кондицион Вазни')
+    imzo=models.BooleanField(default=False)
+    class Meta:
+        verbose_name_plural = "ПАХТАНИ ТАШИШ"
     
     def save(self,*args,**kwargs):
         self.xisobiy=round((self.sofVazn*((100-self.ifloslik)/98)),1)

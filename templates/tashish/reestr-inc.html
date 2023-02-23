@@ -1,0 +1,63 @@
+    <main class="app-content">
+      <div class="app-title">
+        <div>
+          <h1><i class="fa fa-th-list pr-2"></i>ПАХТА ТАШИШ</h1>
+          <p>ПАХТА ТАШИШ БУЙИЧА РЕЕСТИ</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb side">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item">РЕЕСТР</li>
+          <li class="breadcrumb-item active"><a href="#">ПАХТА ТАШИШ</a></li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered text-center table-dark text-info table-sm" id="sampleTable" >
+                  <thead style="line-height:30px ;">
+                    <tr>
+                      <th>САНА</th>
+                      <th>НАКЛАДНОЙ №</th>
+                      <th>ТРАНСПОРТ МАРКА</th>
+                      <th>ТРАНСПОРТ РАКАМ</th>
+                      <th>СОФ ВАЗНИ</th>
+                      <th>ПАРТИЯ</th>
+                      <th>ИФЛОСЛИК</th>
+                      <th>НАМЛИК</th>
+                      <th>ХИСОБИЙ ВАЗН</th>
+                      <th>КОНДИЦИОН ВАЗН</th>
+                      <th>Статус</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for i in rees %}
+                    <tr>
+                      <td>{{i.date|date:"d.m.Y" }}</td>
+                      <td>{{i.nak_num}}</td>
+                      <td>{{i.transport__rusum}}</td>
+                      <td>{{i.transport__tr_num}}</td>
+                      <td>{{i.sofVazn}}</td>
+                      <td>{{i.partiya__partiya}}</td>
+                      <td>{{i.ifloslik}}</td>
+                      <td>{{i.namlik}}</td>
+                      <td>{{i.xisobiy}}</td>
+                      <td>{{i.kond}}</td>
+                      {% if i.imzo %}
+                      <td><button type="button" class="btn btn-sm btn-primary" disabled>izmolangan</button></td>
+                      {% else %}
+                      <td><button type="button" class="btn btn-sm btn-danger" disabled>imzolanmagan</button></td>
+                      {% endif %}
+
+                    </tr>
+                    {% endfor  %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    
