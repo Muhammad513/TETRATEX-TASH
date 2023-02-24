@@ -1,5 +1,11 @@
-<div class="ui warning form segment">
-  <div class="two fields">
+<form  method="POST">
+{% csrf_token %}
+<div class="ui form segment">
+  <div class="three fields">
+    <div class="field">
+      <label>Накладной  №</label>
+      {{form.date}}
+    </div>
     <div class="field">
       <label>Накладной  №</label>
       {{form.nak_num}}
@@ -25,7 +31,7 @@
         <select class="ui dropdown">
           <option value="">---------</option>
           {% for j in partiya %}
-          <option value="{{i.id}}">{{j.partiya}}</option>
+          <option value="{{j.id}}">{{j.partiya}}</option>
           {% endfor %}
         </select>
     </div>
@@ -38,9 +44,8 @@
       <input  type="text">
     </div>
   </div>    
-<button type="submit" class="btn btn-lg  btn-info"> Yuborish</button>
-
-
+  <input type="submit" value="ok">
+</form>
 
 
 

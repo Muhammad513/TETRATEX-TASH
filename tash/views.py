@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Tashish,Transport,Partiya
 from .forms import TashishForm
 # Create your views here.
@@ -25,7 +25,21 @@ def formsfor(request):
     ptm=request.user.punkt.id
     partiya=Partiya.objects.filter(ptm=ptm)
     tr_list=Transport.objects.all()
-    form=TashishForm(request.POST)
+    form=TashishForm()
+    
     tash=Tashish.objects.filter(ptm=ptm).order_by('-date').values('date','nak_num','transport__rusum','transport__tr_num','sofVazn','partiya__partiya','ifloslik','namlik','xisobiy','kond','ptm__name')[0:10]
+    if request.method == "POST":
+        form=TashishForm(request.POST)
+        
+        if form.is_valid():
+            print(1)
+            formsets=form.save(commit=False)
+            formsets.ptm=ptm
+            formsets.save()
+            return redirect('formset')
+    
+    
+    
+    
     context={'user':user,'form':form,"tr_list":tr_list,"partiya":partiya,"tash":tash}
     return render(request,'forms/forms.html',context)

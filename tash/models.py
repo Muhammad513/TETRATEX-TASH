@@ -65,7 +65,7 @@ class Transport(models.Model):
 
 
 class Tashish(models.Model):
-    ptm=models.ForeignKey('Punkt',on_delete=models.SET_NULL,null=True)
+    ptm=models.ForeignKey('Punkt',on_delete=models.SET_NULL,null=True,related_name='ptm')
     date=models.DateField()
     nak_num=models.CharField(max_length=20,verbose_name='Накладной раками')
     transport=models.ForeignKey('Transport',on_delete=models.SET_NULL,verbose_name='Транспортни танланг',null=True)
