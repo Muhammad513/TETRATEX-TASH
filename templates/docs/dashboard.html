@@ -124,6 +124,10 @@
     <!-- The javascript plugin to display page loading on top-->
     <script src="{% static 'js/plugins/pace.min.js' %}"></script>
     <!-- Page specific javascripts-->
+    <script type="text/javascript" src="{% static 'js/plugins/jquery.dataTables.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/plugins/dataTables.bootstrap.min.js' %}"></script>
+    <script type="text/javascript">$('#sampleTable').DataTable();</script>
+    <!-- Google analytics script-->
     <script type="text/javascript" src="{% static 'js/plugins/chart.js' %}"></script>
   </body>
 </html>
