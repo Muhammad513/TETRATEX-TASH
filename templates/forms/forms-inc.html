@@ -7,9 +7,10 @@
     <div class="field">
         <label>Транспорт №</label>
         <select class="ui dropdown">
-          <option value="">Gender</option>
-          <option value="1">Male</option>
-          <option value="0">Female</option>
+          <option value="">---------</option>
+          {% for i in tr_list %}
+          <option value="{{i.id}}">{{i.tr_num}}</option>
+          {% endfor %}
         </select>
     </div>
   </div>
@@ -17,14 +18,13 @@
   <div class="four fields">
     <div class="field">
       <label>Соф вазни</label>
-      <input  type="text">
+      {{form.sofVazn}}
     </div>
     <div class="field">
       <label>Партия №</label>
         <select class="ui dropdown">
           <option value="">Gender</option>
-          <option value="1">Male</option>
-          <option value="0">Female</option>
+          
         </select>
     </div>
     <div class="field">

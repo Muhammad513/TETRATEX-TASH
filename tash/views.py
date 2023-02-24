@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Tashish
+from .models import Tashish,Transport,Partiya
 from .forms import TashishForm
 # Create your views here.
 def home(request):
@@ -22,7 +22,10 @@ def reestr(request):
 
 def formsfor(request):
     user=request.user.profile
-
+    ptm=request.user.punkt.name
+    print(ptm)
+    
+    tr_list=Transport.objects.all()
     form=TashishForm(request.POST)
-    context={'user':user,'form':form}
+    context={'user':user,'form':form,"tr_list":tr_list}
     return render(request,'forms/forms.html',context)

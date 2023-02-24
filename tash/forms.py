@@ -8,7 +8,8 @@ class TashishForm(forms.ModelForm):
         model=Tashish
         fields=['nak_num','transport','sofVazn','partiya','ifloslik','namlik']
         widgets={
-            'nak_num':forms.TextInput(attrs={'class':'form-control',}),
+            'nak_num':forms.TextInput(attrs={'type':'number'}),
+            'sofVazn':forms.TextInput(attrs={'type':'number'}),
             
             
         }
