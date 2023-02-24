@@ -15,6 +15,7 @@ class Punkt(models.Model):
 
 
 class Partiya(models.Model):
+    ptm=models.ForeignKey('Punkt',on_delete=models.SET_NULL,null=True)
     partiya=models.CharField(max_length=7,verbose_name='ПАРТИЯ РАКАМИ')
     bunt=models.CharField(max_length=20,verbose_name='Жой РАКАМИ')
     nav=models.CharField(max_length=30,verbose_name='Селекцион Нав',help_text='Анд-35,Анд-36,Шарк')
@@ -65,7 +66,7 @@ class Transport(models.Model):
 
 class Tashish(models.Model):
     ptm=models.ForeignKey('Punkt',on_delete=models.SET_NULL,null=True)
-    date=models.DateField(auto_now=True)
+    date=models.DateField()
     nak_num=models.CharField(max_length=20,verbose_name='Накладной раками')
     transport=models.ForeignKey('Transport',on_delete=models.SET_NULL,verbose_name='Транспортни танланг',null=True)
     sofVazn=models.FloatField(verbose_name='Соф Вазни')

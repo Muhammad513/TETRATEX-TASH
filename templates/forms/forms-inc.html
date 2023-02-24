@@ -23,8 +23,10 @@
     <div class="field">
       <label>Партия №</label>
         <select class="ui dropdown">
-          <option value="">Gender</option>
-          
+          <option value="">---------</option>
+          {% for j in partiya %}
+          <option value="{{i.id}}">{{j.partiya}}</option>
+          {% endfor %}
         </select>
     </div>
     <div class="field">

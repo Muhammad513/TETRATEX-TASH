@@ -1,17 +1,35 @@
-<table class="table table-sm table-bordered">
+<table class="table table-sm table-bordered text-center">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Сана</th>
+        <th scope="col">Накладной №</th>
+        <th scope="col">Транспорт русуми</th>
+        <th scope="col">Транспорт №</th>
+        <th scope="col">Соф вазни</th>
+        <th scope="col">партия</th>
+        <th scope="col">Ифлослик ;</th>
+        <th scope="col">Намлик %</th>
+        <th scope="col">Хисобий вазн</th>
+        <th scope="col">Кондицон вазн</th>
+        <th scope="col">ПТМ</th>
       </tr>
     </thead>
     <tbody>
+      {% for t in tash %}
+     
       <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
+       <td>{{t.date|date:"d.m.Y"}}</td>
+       <td>{{t.nak_num}}</td>
+       <td>{{t.transport__rusum}}</td>
+       <td>{{t.transport__tr_num}}</td>
+       <td>{{t.sofVazn}}</td>
+       <td>{{t.partiya__partiya}}</td>
+       <td>{{t.ifloslik}}</td>
+       <td>{{t.namlik}}</td>
+       <td>{{t.xisobiy}}</td>
+       <td>{{t.kond}}</td>
+       <td>{{t.ptm__name}}</td>
       </tr>
+      {% endfor %}
     </tbody>
   </table>
