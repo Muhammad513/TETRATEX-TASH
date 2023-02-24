@@ -9,6 +9,7 @@ def home(request):
 
 def reestr(request):
     user=request.user.profile
+    print(user)
 
     rees=Tashish.objects.filter().values('date','nak_num','transport__rusum',
     'transport__tr_num','sofVazn','partiya__partiya',"ifloslik",'namlik','xisobiy',
@@ -22,17 +23,12 @@ def reestr(request):
 
 def formsfor(request):
     user=request.user.profile
-    ptm=request.user.punkt.id
-    partiya=Partiya.objects.filter(ptm=ptm)
-    tr_list=Transport.objects.all()
-    form=TashishForm()
-    
-    tash=Tashish.objects.filter(ptm=ptm).order_by('-date').values('date','nak_num','transport__rusum','transport__tr_num','sofVazn','partiya__partiya','ifloslik','namlik','xisobiy','kond','ptm__name')[0:10]
+    ptm=request.user.punkt
+    form=TashishForm(user=ptm)
+    tash=Tashish.objects.filter(ptm=ptm).order_by('-id').values('date','nak_num','transport__rusum','transport__tr_num','sofVazn','partiya__partiya','ifloslik','namlik','xisobiy','kond','ptm__name')[0:10]
     if request.method == "POST":
         form=TashishForm(request.POST)
-        
         if form.is_valid():
-            print(1)
             formsets=form.save(commit=False)
             formsets.ptm=ptm
             formsets.save()
@@ -41,5 +37,5 @@ def formsfor(request):
     
     
     
-    context={'user':user,'form':form,"tr_list":tr_list,"partiya":partiya,"tash":tash}
+    context={'user':user,'form':form,"tash":tash}
     return render(request,'forms/forms.html',context)

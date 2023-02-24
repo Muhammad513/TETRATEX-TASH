@@ -18,32 +18,32 @@
                 <table class="table table-hover table-bordered text-center  text-info table-sm" id="sampleTable" >
                   <thead style="line-height:30px ;">
                     <tr>
-                      <th>САНА</th>
-                      <th>НАКЛАДНОЙ №</th>
-                      <th>ТРАНСПОРТ МАРКА</th>
-                      <th>ТРАНСПОРТ РАКАМ</th>
-                      <th>СОФ ВАЗНИ</th>
-                      <th>ПАРТИЯ</th>
-                      <th>ИФЛОСЛИК</th>
-                      <th>НАМЛИК</th>
-                      <th>ХИСОБИЙ ВАЗН</th>
-                      <th>КОНДИЦИОН ВАЗН</th>
-                      <th>Статус</th>
+                      <th scope="col" class="align-middle">САНА</th>
+                      <th scope="col" class="align-middle">НАКЛАДНОЙ №</th>
+                      <th scope="col" class="align-middle">ТРАНСПОРТ МАРКА</th>
+                      <th scope="col" class="align-middle">ТРАНСПОРТ РАКАМ</th>
+                      <th scope="col" class="align-middle">СОФ ВАЗНИ</th>
+                      <th scope="col" class="align-middle">ПАРТИЯ</th>
+                      <th scope="col" class="align-middle">ИФЛОСЛИК</th>
+                      <th scope="col" class="align-middle">НАМЛИК</th>
+                      <th scope="col" class="align-middle">ХИСОБИЙ ВАЗН</th>
+                      <th scope="col" class="align-middle" >КОНДИЦИОН ВАЗН</th>
+                      <th class="align-middle">Статус</th>
                     </tr>
                   </thead>
                   <tbody>
                     {% for i in rees %}
                     <tr>
-                      <td>{{i.date|date:"d.m.Y" }}</td>
-                      <td>{{i.nak_num}}</td>
-                      <td>{{i.transport__rusum}}</td>
-                      <td>{{i.transport__tr_num}}</td>
-                      <td>{{i.sofVazn}}</td>
-                      <td>{{i.partiya__partiya}}</td>
-                      <td>{{i.ifloslik}}</td>
-                      <td>{{i.namlik}}</td>
-                      <td>{{i.xisobiy}}</td>
-                      <td>{{i.kond}}</td>
+                      <td scope="col">{{i.date|date:"d.m.Y" }}</td>
+                      <td scope="col">{{i.nak_num}}</td>
+                      <td scope="col" class="">{{i.transport__rusum}}</td>
+                      <td scope="col">{{i.transport__tr_num}}</td>
+                      <td scope="col">{{i.sofVazn}}</td>
+                      <td scope="col">{{i.partiya__partiya}}</td>
+                      <td scope="col" class="">{{i.ifloslik}}</td>
+                      <td scope="col" class="">{{i.namlik}}</td>
+                      <td scope="col" class="">{{i.xisobiy}}</td>
+                      <td scope="col">{{i.kond}}</td>
                       {% if i.imzo %}
                       <td><button type="button" class="btn btn-sm btn-primary" disabled>izmolangan</button></td>
                       {% else %}
