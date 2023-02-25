@@ -1,58 +1,56 @@
 <form  method="post">
-    {% csrf_token %}
-    <div class="ui form segment">
-      <div class="five fields">
-        <div class="field">
-          <label>ПАРТИЯ №</label>
-          {{form.partiya}}
-        </div>
-        <div class="field">
-          <label>БУНТ  №</label>
-          {{form.bunt}}
-        </div>
-        <div class="field">
-            <label>НАВИ</label>
-            {{form.nav}}
-        </div>
-        <div class="field">
-            <label>СОРТИ</label>
-            {{form.sort}}
-        </div>
-        <div class="field">
-            <label>СНИФИ</label>
-                 {{form.snif}}
-        </div>
-    </div>
-    
-      <div class="three fields">
-        <div class="field">
-            <label>Соф вазни </label>
-             {{form.sofVazn}}     
-        </div>
-        <div class="field">
-          <label>Хисобий вазни </label>
-           {{form.xisobiy}}     
-        </div>
-        <div class="field">
-          <label>Кондицион вазни</label>
-          {{form.kond}}
-        </div>
+  {% csrf_token %}
+  <div class="ui form segment">
+    <div class="three fields">
+      <div class="field">
+        <label>Партия  №</label>
+        {{form.partiya}}
       </div>
-      <button class="fluid ui button teal mt-1">&nbsp;Y&nbsp;O&nbsp;B&nbsp;O&nbsp;R&nbsp;I&nbsp;S&nbsp;H</button>    
-    </form>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+      <div class="field">
+        <label>Бунт  №</label>
+        {{form.bunt}}
+      </div>
+      <div class="field">
+          <label>Нави №</label>
+          {{form.nav}}
+      </div>
+    </div>
+  
+    <div class="four fields">
+      <div class="field">
+        <label>Сорт</label>
+        {{form.sort}}
+      </div>
+      <div class="field">
+        <label>Сниф</label>
+          {{form.snif}}
+      </div>
+      <div class="field">
+        <label>Соф вазни %</label>
+        {{form.sofVazn}}
+      </div>
+      <div class="field">
+        <label>Хисобий вазни %</label>
+        {{form.xisobiy}}
+      </div>
+      <div class="field">
+        <label>Кондицион вазни</label>
+        {{form.kond}}
+      </div>
+    </div>
+    <button class="fluid ui button teal mt-5">&nbsp;Y&nbsp;O&nbsp;B&nbsp;O&nbsp;R&nbsp;I&nbsp;S&nbsp;H</button>    
+  </form>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

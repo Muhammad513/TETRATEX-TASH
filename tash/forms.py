@@ -25,4 +25,10 @@ class PartiyaForm(forms.ModelForm):
     class Meta:
         model=Partiya
         fields=('partiya','bunt','nav','sort','snif','sofVazn','xisobiy','kond')
-
+        widgets={
+                'sort':forms.TextInput(attrs={'type':'number'}),
+                'snif':forms.TextInput(attrs={'type':'number'}),
+                'sofVazn':forms.TextInput(attrs={'type':'number'}),
+                'xisobiy':forms.TextInput(attrs={'type':'number'}),
+                'kond':forms.TextInput(attrs={'type':'number'}),
+            }

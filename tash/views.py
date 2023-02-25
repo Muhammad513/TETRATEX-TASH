@@ -41,14 +41,14 @@ def formsfor(request):
     return render(request,'forms/forms.html',context)
 
 def xl_7(request):
-    form=PartiyaForm()
+    
     user=request.user.profile
     ptm=request.user.punkt
-    print(form)
+    form=PartiyaForm()
     if request.method == "POST":
-        forms=PartiyaForm(request.POST)
-        if forms.is_valid():
-            formsets=forms.save(commit=False)
+        form=PartiyaForm(request.POST)
+        if form.is_valid():
+            formsets=form.save(commit=False)
             formsets.ptm=ptm
             formsets.save()
             return redirect('7xl')
