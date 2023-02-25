@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Punkt,Partiya,Tashish,Firma,Transport,PaxtaNavi
+from .models import Punkt,Partiya,Tashish,Firma,Transport,PaxtaNavi,Settings_p
 # Register your models here.
 class PunktAdmin(admin.ModelAdmin):
     list_display = ('id','name', 'bux')

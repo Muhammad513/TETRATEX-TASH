@@ -4,7 +4,7 @@
         <th class="align-middle" scope="col">№</th>
         <th class="align-middle" scope="col">Партия <br> №</th>
         <th class="align-middle" scope="col">Селекция</th>
-        <th class="align-middle" scope="col">Сўрти</th>
+        <th class="align-middle" scope="col">Сoрти</th>
         <th class="align-middle" scope="col">Сниф</th>
         <th class="align-middle" scope="col">Физик <br> вазни</th>
         <th class="align-middle" scope="col">Ўртача <br> Ифлослик %</th>
@@ -15,18 +15,20 @@
       </tr>
     </thead>
     <tbody>
-      {% for t in tash %}
+      {% for p in part %}
      
       <tr>
-       <td>{{t.date|date:"d.m.Y"}}</td>
-       <td>{{t.transport__tr_num}}</td>
-       <td>{{t.sofVazn}}</td>
-       <td>{{t.partiya__partiya}}</td>
-       <td>{{t.ifloslik}}</td>
-       <td>{{t.namlik}}</td>
-       <td>{{t.xisobiy}}</td>
-       <td>{{t.kond}}</td>
-       <td>{{t.ptm__name}}</td>
+       <td>{{forloop.counter}}</td>
+       <td>{{p.partiya}}</td>
+       <td>{{p.nav}}</td>
+       <td>{{p.sort}}</td>
+       <td>{{p.snif}}</td>
+       <td>{{p.sofVazn}}</td>
+       <td>{{p.ifloslik}}</td>
+       <td>{{p.xisobiy}}</td>
+       <td>{{p.namlik}}</td>
+       <td>{{p.kond}}</td>
+       <td>{{p.ptm}}</td>
       </tr>
       {% endfor %}
     </tbody>

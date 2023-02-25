@@ -41,10 +41,10 @@ def formsfor(request):
     return render(request,'forms/forms.html',context)
 
 def xl_7(request):
-    
     user=request.user.profile
     ptm=request.user.punkt
     form=PartiyaForm()
+    part=Partiya.objects.filter(ptm=ptm).order_by('-id')
     if request.method == "POST":
         form=PartiyaForm(request.POST)
         if form.is_valid():
@@ -53,5 +53,5 @@ def xl_7(request):
             formsets.save()
             return redirect('7xl')
     
-    context={'user':user,"form":form}
+    context={'user':user,"form":form,"part":part}
     return render(request,'forms/7xl.html',context)    
