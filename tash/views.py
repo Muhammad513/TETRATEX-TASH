@@ -24,12 +24,12 @@ def reestr(request):
 def formsfor(request):
     user=request.user.profile
     ptm=request.user.punkt
-    form=TashishForm(user=ptm)
+    form=TashishForm(ptm)
     tash=Tashish.objects.filter(ptm=ptm).order_by('-id').values('date','nak_num','transport__rusum','transport__tr_num','sofVazn','partiya__partiya','ifloslik','namlik','xisobiy','kond','ptm__name')[0:10]
     if request.method == "POST":
-        form=TashishForm(request.POST)
-        if form.is_valid():
-            formsets=form.save(commit=False)
+        forms=TashishForm(ptm,request.POST)
+        if forms.is_valid():
+            formsets=forms.save(commit=False)
             formsets.ptm=ptm
             formsets.save()
             return redirect('formset')

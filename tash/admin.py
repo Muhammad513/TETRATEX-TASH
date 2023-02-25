@@ -5,7 +5,7 @@ class PunktAdmin(admin.ModelAdmin):
     list_display = ('id','name', 'bux')
 
 class PartiyaAdmin(admin.ModelAdmin):
-    list_display = ('id','partiya', 'bunt',"nav","sort",'snif',"sofVazn",'ifloslik',"xisobiy",'namlik','kond')
+    list_display = ('id','ptm','partiya', 'bunt',"nav","sort",'snif',"sofVazn",'ifloslik',"xisobiy",'namlik','kond')
     
 
 class TashishAdmin(admin.ModelAdmin):
