@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Tashish,Transport,Partiya
-from .forms import TashishForm
+from .forms import TashishForm,PartiyaForm
 # Create your views here.
 def home(request):
     user=request.user.profile
@@ -9,9 +9,9 @@ def home(request):
 
 def reestr(request):
     user=request.user.profile
-    print(user)
-
-    rees=Tashish.objects.filter().values('date','nak_num','transport__rusum',
+    ptm=request.user.punkt
+    
+    rees=Tashish.objects.filter(ptm=ptm).values('date','nak_num','transport__rusum',
     'transport__tr_num','sofVazn','partiya__partiya',"ifloslik",'namlik','xisobiy',
     'kond',"imzo").order_by('-date')
     
@@ -39,3 +39,19 @@ def formsfor(request):
     
     context={'user':user,'form':form,"tash":tash}
     return render(request,'forms/forms.html',context)
+
+def xl_7(request):
+    form=PartiyaForm()
+    user=request.user.profile
+    ptm=request.user.punkt
+    print(form)
+    if request.method == "POST":
+        forms=PartiyaForm(request.POST)
+        if forms.is_valid():
+            formsets=forms.save(commit=False)
+            formsets.ptm=ptm
+            formsets.save()
+            return redirect('7xl')
+    
+    context={'user':user,"form":form}
+    return render(request,'forms/7xl.html',context)    

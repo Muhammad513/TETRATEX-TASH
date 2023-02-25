@@ -20,3 +20,9 @@ class TashishForm(forms.ModelForm):
         super (TashishForm,self ).__init__(*args,**kwargs) # populates the post
         self.fields['partiya'].queryset = Partiya.objects.filter(ptm=ptm)
         
+
+class PartiyaForm(forms.ModelForm):
+    class Meta:
+        model=Partiya
+        fields=('partiya','bunt','nav','sort','snif','sofVazn','xisobiy','kond')
+
