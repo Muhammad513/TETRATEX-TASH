@@ -1,13 +1,16 @@
 from django.shortcuts import render,redirect
 from .models import Tashish,Transport,Partiya,DisplaySetting,Firma
 from .forms import TashishForm,PartiyaForm,TruckForm,FirmaForm
-# Create your views here.
+# Create your views here.++
+from .decarators import check_user_able_to_see_page
 from django.core import serializers
 def home(request):
     user=request.user.profile
     context={'user':user}
     return render(request,'docs/dashboard.html',context)
 
+
+@check_user_able_to_see_page("PTM")
 def reestr(request):
     user=request.user.profile
     ptm=request.user.punkt
@@ -21,7 +24,7 @@ def reestr(request):
     context={'rees':rees,'user':user}
     return render(request,'tashish/reestr.html',context)
 
-
+@check_user_able_to_see_page("PTM")
 def formsfor(request):
     user=request.user.profile
     ptm=request.user.punkt
@@ -77,7 +80,7 @@ def truck(request):
 def firma(request):
     form=FirmaForm()
     user=request.user.profile
-    firma=Firma.objects.order_by('-id')[0:15]
+    firma=Firma.objects.order_by('-id')[0:15].values('name','user__first_name','narx')
     if request.method == "POST":
         form=FirmaForm(request.POST)
         if form.is_valid():
@@ -88,3 +91,8 @@ def firma(request):
     
     context={'user':user,"form":form,"firma":firma}
     return render(request,'forms/firma.html',context)    
+
+
+def error_404_view(request,exception):
+    user=request.user.profile
+    return render(request, 'docs/404.html',{'user':user})

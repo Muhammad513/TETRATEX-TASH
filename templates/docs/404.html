@@ -1,0 +1,17 @@
+{% extends 'docs/dashboard.html' %}
+
+{% block content %}
+
+<main class="app-content">
+  <div class="app-title">
+    <div>
+      <h2 class="ui header">
+        <img src="{{user.pic_thumbnail.url}}" class="ui circular image" style="display:inline;">
+       <p class="pt-5">{{user.first_name}}  {{user.last_name}}</p><br>
+       <p class="text-danger">БУ САХИФА СИЗ УЧУН БЛОКЛАНГАН !!!!</p><br>
+      </h2>
+  </div>
+  </div>  
+</main>
+
+{% endblock %}

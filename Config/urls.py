@@ -20,6 +20,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/',include('tash.urls')),
+    path('',include('login.urls')),
 ]
+
+handler404 = 'tash.views.error_404_view'
 
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

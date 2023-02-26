@@ -27,7 +27,7 @@
   </head>
   <body class="app sidebar-mini">
     <!-- Navbar-->
-    <header class="app-header"><a class="app-header__logo" href="index.html">TETRATEX MCHJ</a>
+    <header class="app-header"><a class="app-header__logo" href="{% url 'home' %}">TETRATEX MCHJ</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
       <!-- Navbar Right Menu-->
       <ul class="app-nav">
@@ -81,7 +81,7 @@
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
             <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i>Созламалар</a></li>
             <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i>КАБИНЕТ</a></li>
-            <li><a class="dropdown-item" href="page-login.html"><i class="fa fa-sign-out fa-lg"></i>Чикиш..</a></li>
+            <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-sign-out fa-lg"></i>Чикиш..</a></li>
           </ul>
         </li>
       </ul>
@@ -100,8 +100,8 @@
       <ul class="app-menu">
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">ПТМ-ФИЛИАЛАР</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="bootstrap-components.html"><i class="icon fa fa-circle-o"></i>ПАХТА ТАШИШ</a></li>
-            <li><a class="treeview-item" href="https://fontawesome.com/v4.7.0/icons/" target="_blank" rel="noopener"><i class="icon fa fa-circle-o"></i>АДМИН-КАБИНЕТ</a></li>
+            <li><a class="treeview-item" href="{% url 'reestr' %}"><i class="icon fa fa-circle-o"></i>ПАХТА ТАШИШ</a></li>
+            <li><a class="treeview-item" href="{% url 'formset' %}" target="_blank" rel="noopener"><i class="icon fa fa-circle-o"></i>АДМИН-КАБИНЕТ</a></li>
           </ul>
         </li>
       </ul>
