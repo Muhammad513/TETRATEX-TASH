@@ -2,7 +2,7 @@ from .models import*
 from django import forms
 import datetime
 from .views import*
-block=False
+
 x=datetime.datetime.now()
 date=x.strftime("%Y-%m-%d")
 
@@ -26,14 +26,21 @@ class PartiyaForm(forms.ModelForm):
         model=Partiya
         fields=('partiya','bunt','nav','sort','snif','sofVazn','xisobiy','kond')
         widgets={
-                'sofVazn':forms.TextInput(attrs={'type':'number','disabled':block}),
-                'xisobiy':forms.TextInput(attrs={'type':'number','disabled':block}),
-                'kond':forms.TextInput(attrs={'type':'number','disabled':block}),
-                'partiya':forms.TextInput(attrs={'disabled':block}),
-                'bunt':forms.TextInput(attrs={'disabled':block}),
-                'nav':forms.TextInput(attrs={'disabled':block}),
-                'sort':forms.TextInput(attrs={'disabled':block}),
-                'snif':forms.TextInput(attrs={'disabled':block}),
-                'nav':forms.TextInput(attrs={'disabled':block}),
+                'sofVazn':forms.TextInput(attrs={'type':'number'}),
+                'xisobiy':forms.TextInput(attrs={'type':'number'}),
+                'kond':forms.TextInput(attrs={'type':'number'}),
+                
+                
             }
-        
+class TruckForm(forms.ModelForm):
+    class Meta:
+        model=Transport
+        fields=('firma','rusum','tr_num')       
+
+class FirmaForm(forms.ModelForm):
+    class Meta:
+        model=Firma
+        fields=('name','narx')    
+
+    
+

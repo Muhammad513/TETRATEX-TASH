@@ -42,8 +42,8 @@ class Partiya(models.Model):
 
 class Firma(models.Model):
     name=models.CharField(max_length=20,verbose_name='Фирма номи',help_text="М: AGRMOMAX MCHJ")
-    s=models
-
+    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
+    narx=models.FloatField(null=True)
     def __str__(self):
         return str(self.name)
 
@@ -54,7 +54,7 @@ class Transport(models.Model):
     firma=models.ForeignKey('Firma',on_delete=models.PROTECT,verbose_name='Фирма')
     rusum=models.CharField(max_length=20,verbose_name='Транспорт маркаси')
     tr_num=models.CharField(max_length=20,verbose_name='Транспорт раками')
-    
+    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
 
     class Meta:
         verbose_name_plural = "Т/Р руйхатдан утказиш"
@@ -98,3 +98,14 @@ class PaxtaNavi(models.Model):
     
     def __str__(self):
         return str(self.nav_name)        
+    
+
+class DisplaySetting(models.Model):
+    name=models.CharField(max_length=20,null=True)
+    display=models.BooleanField(default=False,verbose_name='Дисплейни учириш')    
+
+    def __str__(self):
+        return str(self.name)    
+    
+    class Meta:
+        verbose_name_plural = "DISPLAY СОЗЛАМАЛАРИ"

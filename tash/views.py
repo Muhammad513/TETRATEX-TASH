@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
-from .models import Tashish,Transport,Partiya
-from .forms import TashishForm,PartiyaForm
+from .models import Tashish,Transport,Partiya,DisplaySetting,Firma
+from .forms import TashishForm,PartiyaForm,TruckForm,FirmaForm
 # Create your views here.
+from django.core import serializers
 def home(request):
     user=request.user.profile
     context={'user':user}
@@ -41,6 +42,7 @@ def formsfor(request):
     return render(request,'forms/forms.html',context)
 
 def xl_7(request):
+    display7xl=DisplaySetting.objects.filter(name='7XL').values('display')[0]['display']
     user=request.user.profile
     ptm=request.user.punkt
     form=PartiyaForm()
@@ -55,3 +57,34 @@ def xl_7(request):
     
     context={'user':user,"form":form,"part":part}
     return render(request,'forms/7xl.html',context)    
+
+
+def truck(request):
+    form=TruckForm()
+    user=request.user.profile
+    truck=Transport.objects.values('firma__name','rusum','tr_num','user__first_name').order_by('-id')[0:15]
+    if request.method == "POST":
+        form=TruckForm(request.POST)
+        if form.is_valid():
+            forms=form.save(commit=False)
+            forms.user=request.user
+            forms.save()
+            return redirect('truck')
+    
+    context={'user':user,"form":form,"truck":truck}
+    return render(request,'forms/truck.html',context)    
+
+def firma(request):
+    form=FirmaForm()
+    user=request.user.profile
+    firma=Firma.objects.order_by('-id')[0:15]
+    if request.method == "POST":
+        form=FirmaForm(request.POST)
+        if form.is_valid():
+            forms=form.save(commit=False)
+            forms.user=request.user
+            forms.save()
+            return redirect('firma')
+    
+    context={'user':user,"form":form,"firma":firma}
+    return render(request,'forms/firma.html',context)    

@@ -1,0 +1,29 @@
+{% extends 'docs/dashboard.html' %}
+
+{% block content %}
+
+<main class="app-content">
+    <div class="app-title">
+        <div>
+        <h1><i class="fa fa-th-list pr-2"></i>ШАХСИЙ КАБИНЕТ</h1>
+        <p>ПАХТА ТАШИШ БУЙИЧА </p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb side">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item">АДМИН</li>
+            <li class="breadcrumb-item active"><a href="#">ТАШИШ АДМИН</a></li>
+        </ul>
+    </div>
+    
+    {% include 'forms/navs.html' %}
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            {% include 'forms/firma-inc.html' %}
+        </div>
+        <div class="d-none d-sm-block d-md-none d-lg-block pt-4 col-6">  
+            {% include 'forms/firma-table.html' %}
+        </div>  
+    </div>
+</main>
+
+{% endblock %}

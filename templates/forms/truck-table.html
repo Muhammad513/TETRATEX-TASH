@@ -1,0 +1,25 @@
+<div class="ui form segment">
+<table class="table table-sm table-bordered text-center inverted teal">
+    <thead>
+        
+      <tr>
+        <th class="align-middle" scope="col">№</th>
+        <th class="align-middle" scope="col">Ташувчи фирма</th>
+        <th class="align-middle" scope="col">Транспорт русуми</th>
+        <th class="align-middle" scope="col">Транспорт №</th>
+        <th class="align-middle" scope="col">USERS</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for i in truck %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.firma__name}}</td>
+            <td>{{i.rusum}}</td>
+            <td>{{i.tr_num}}</td>
+            <td>{{i.user__first_name}}</td>
+        </tr>
+    {% endfor %}    
+    </tbody>
+  </table>
+</div>  

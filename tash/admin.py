@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Punkt,Partiya,Tashish,Firma,Transport,PaxtaNavi,Settings_p
+from .models import Punkt,Partiya,Tashish,Firma,Transport,PaxtaNavi,DisplaySetting
 # Register your models here.
 class PunktAdmin(admin.ModelAdmin):
     list_display = ('id','name', 'bux')
@@ -30,7 +30,7 @@ class PaxtaNaviAdmin(admin.ModelAdmin):
 
 
 
-
+admin.site.register(DisplaySetting)
 admin.site.register(PaxtaNavi,PaxtaNaviAdmin)
 admin.site.register(Punkt,PunktAdmin) 
 admin.site.register(Partiya,PartiyaAdmin)    
