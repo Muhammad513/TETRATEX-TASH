@@ -1,0 +1,55 @@
+<div class="ui form segment" style="box-sizing: border-box;">
+    <div class="form pb-3 col-sm-12 col-md-6 col-lg-2" style="float:right ;">
+        <form method="post" class="d-flex">
+            {% csrf_token %}
+            <input type="date" name="date" id="" value="{{date}}" class="">
+            <button class="ui primary button">sana</button>
+        </form>
+    </div>
+    
+    <table class="table table-sm table-bordered text-center">
+        <thead>
+          <tr>
+            <th class="align-middle" scope="col">№</th>
+            <th class="align-middle" scope="col">Сана</th>
+            <th class="align-middle" scope="col">Накладной<br>№</th>
+            <th class="align-middle" scope="col">Т/Р<br> №</th>
+            <th class="align-middle" scope="col">Пахта<br> нави</th>
+            <th class="align-middle" scope="col">Сорти <br> Снифи</th>
+            <th class="align-middle" scope="col">Партия <br> №</th>
+            <th class="align-middle" scope="col">Соф <br> вазни</th>
+            <th class="align-middle" scope="col">Ифлослик <br> %</th>
+            <th class="align-middle" scope="col">Намлик <br> %</th>
+            <th class="align-middle" scope="col">Хисобий <br> вазни</th>
+            <th class="align-middle" scope="col">Кондицион <br> вазн</th>
+            <th class="align-middle" scope="col">Пункт <br> номи</th>
+            <th class="align-middle" scope="col">Статус</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in tash %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.date|date:'d.m.y'}}</td>
+            <td>{{i.nak_num}}</td>
+            <td>{{i.transport__tr_num}}</td>
+            <td>{{i.partiya__nav__nav_name}}</td>
+            <td>{{i.partiya__sort}}.{{i.partiya__snif}}</td>
+            <td>{{i.partiya__partiya}}</td>
+            <td>{{i.sofVazn}}</td>
+            <td>{{i.ifloslik}}</td>
+            <td>{{i.namlik}}</td>
+            <td>{{i.xisobiy}}</td>
+            <td>{{i.kond}}</td>
+            <td>{{i.ptm__name}}</td>
+            {% if i.imzo %}
+            <td ><a href="{% url 'imzo' i.id %}" class="text-success"><i class="fa fa-stop-circle-o"  style="font-size:22px ;"></i></a></td>
+            {% else %}
+            <td ><a href="{% url 'imzo' i.id %}" class="text-danger"><i class="fa fa-stop-circle-o"  style="font-size:22px ;"></i></a></td>
+            {% endif %}
+            
+        </tr>
+        {% endfor %}
+      </table>
+    </div> 
+     

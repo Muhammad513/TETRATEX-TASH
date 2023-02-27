@@ -1,9 +1,9 @@
 from django.shortcuts import render,redirect
 from .models import Tashish,Transport,Partiya,DisplaySetting,Firma
-from .forms import TashishForm,PartiyaForm,TruckForm,FirmaForm
+from .forms import TashishForm,PartiyaForm,TruckForm,FirmaForm,TashishEdit
 # Create your views here.++
 from .decarators import check_user_able_to_see_page
-from django.core import serializers
+from .function import datenow
 def home(request):
     user=request.user.profile
     context={'user':user}
@@ -45,7 +45,6 @@ def formsfor(request):
     return render(request,'forms/forms.html',context)
 
 def xl_7(request):
-    display7xl=DisplaySetting.objects.filter(name='7XL').values('display')[0]['display']
     user=request.user.profile
     ptm=request.user.punkt
     form=PartiyaForm()
@@ -96,3 +95,34 @@ def firma(request):
 def error_404_view(request,exception):
     user=request.user.profile
     return render(request, 'docs/404.html',{'user':user})
+
+
+
+def infores(request):
+    date=request.POST.get("date")
+    date=datenow(date)
+    user=request.user.profile
+
+    tash=Tashish.objects.filter(date=date).values('date','nak_num','transport__tr_num','sofVazn','partiya__partiya','ifloslik','namlik','xisobiy','kond','imzo','partiya__nav__nav_name','partiya__sort','partiya__snif',"ptm__name",'id')
+    
+    context={"tash":tash,'user':user,"date":date}
+    return render(request,'info/info.html',context)
+    
+def update(request,pk):
+    user=request.user.profile
+    ptm=request.user.punkt
+    tash=Tashish.objects.get(id=pk)
+    form=TashishEdit(instance=tash)
+    
+    if request.method == "POST":
+        form=TashishEdit(request.POST,instance=tash)
+        if form.is_valid():
+            form.save()
+            return redirect('info')
+    
+    
+    
+    
+    context={'user':user,'form':form,"tash":tash}
+    return render(request,'imzo/imzo.html',context)
+    

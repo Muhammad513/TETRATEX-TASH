@@ -44,3 +44,9 @@ class FirmaForm(forms.ModelForm):
 
     
 
+class TashishEdit(forms.ModelForm):
+   
+    class Meta:
+        model=Tashish
+        fields='__all__'
+       
