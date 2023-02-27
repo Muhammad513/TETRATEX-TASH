@@ -1,3 +1,151 @@
-<form action="" method="post">
-    {{form}}
-</form>
+<div class="ui raised segments">
+    <div class="ui segment">
+        <div class="row">
+            <div class="col-8">  
+                <h3 class="text-center align-middle">ТАВАР -ТРАНСПОРТ НАКЛАДНОЙИ</h3>
+                <h4 class="text-center align-middle"disabled>Пахтани пахта саклаш пункитидан корхонага ташиш учун </h4>
+            </div>
+            <div class="col-2 p-2">
+                <h3 class="text-center align-middle"disabled>{{tash.nak_num}}</h3>
+            </div>
+            <div class="col-1 p-2">
+                <h6 class="text-center align-middle"disabled>серия АБ-2</h3>
+            </div>
+            <div class="col-1 p-2">
+                <h6 class="text-left align-middle"disabled>Махсулот 1-ТХЛ шакл</h3>
+            </div>
+            <div class="col-8 p-2">
+                <h5 class="text-center align-middle">{{tash.date|date:'Y __d__F'}}</h5>
+               
+            </div>
+            <div class="col-4 p-2">
+                <h5 class="text-center align-middle"></h5>
+               
+            </div>
+            <div class="col-4 pt-3">
+                <h5 class="text-center align-middle">ЮК ЖУНАТУВЧИ:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{tash.ptm}}   </h5>
+               
+            </div>
+            <div class="col-8 pr-5">
+                <h5 class="text-right">{{tash.transport}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+            </div>
+            <div class="col-4 pt-3">
+                <h5 class="text-center align-middle">ЮК ОЛУВЧИ:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COTTON VILLA MCHJ   </h5>
+            </div>
+            <div class="col-8 pr-5">
+                <h5 class="text-right">{{tash.transport.firma}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+            </div>
+            <div class="col-3 pt-5">
+                <h5 class="text-center">Уруглик ёки техник:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ТЕХНИК</h5>
+            </div>
+            <div class="col-2 pt-5">
+                <h5 class="text-center">ГАРАМ: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{tash.partiya.bunt}}</h5>
+            </div>
+            <div class="col-2 pt-5">
+                <h5 class="text-center">БУНТ : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{tash.partiya}}</h5>
+            </div>
+            <div class="col-2 pt-5">
+                <h5 class="text-center">СНИФ /СОРТИ: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{tash.partiya.sort}}/{{tash.partiya.snif}}</h5>
+            </div>
+            <div class="col-2 pt-5">
+                <h5 class="text-center">Селекцион нави: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{tash.partiya.nav}}</h5>
+            </div>
+            <div class="col-12 pt-5">
+                <table class="table table-sm table-bordered text-center inverted teal">
+                    <thead>
+                        <tr>
+                            <th class="align-middle" scope="col">Юкнинг номи</th>
+                            <th class="align-middle" scope="col">Ифлослик %</th>
+                            <th class="align-middle" scope="col">Намлик %</th>
+                            <th class="align-middle" scope="col">УРАМА билан <br> биргаликдаги <br> вазни</th>
+                            <th class="align-middle" scope="col">УРАМА </th>
+                            <th class="align-middle" scope="col">Соф вазни</th>
+                            <th class="align-middle" scope="col">Хисобий</th>
+                            <th class="align-middle" scope="col">Кондицион</th>
+                            <th class="align-middle" scope="col">Нарх</th>
+                            <th class="align-middle" scope="col">Сумма</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="5" style="font-size:25px ;">Чигитли пахта</td>
+                            <td>{{tash.ifloslik}}</td>
+                            <td>{{tash.namlik}}</td>
+                            <td>-----</td>
+                            <td>------</td>
+                            <td>{{tash.sofVazn}}</td>
+                            <td>{{tash.xisobiy}}</td>
+                            <td>{{tash.kond}}</td>
+                            <td>-----</td>
+                            <td>----------</td>
+                        </tr>
+                        <tr>
+                            
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                        </tr>
+                        <tr>
+                          
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                        </tr>
+                        <tr>
+                            
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                        </tr>
+                        <tr>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                            <td>----</td>
+                        </tr>
+                       
+                        
+
+                    </tbody>
+                  </table>
+                  
+                  <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="col-12 pl-5">
+                    <div class="ui checked checkbox">
+                        {{form.imzo}}
+                        <label>IMZO</label>
+                    </div>
+                    
+                    <div class="col-12 pt-5">
+                        <button class="fluid ui button">ИМЗОНИ ЮБОРИШ</button>
+                    </div>
+                  </form>
+                
+                </div>
+        </div>  
+    </div>
+</div>

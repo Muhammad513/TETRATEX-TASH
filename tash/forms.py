@@ -48,5 +48,5 @@ class TashishEdit(forms.ModelForm):
    
     class Meta:
         model=Tashish
-        fields='__all__'
-       
+        fields=('imzo',)
+   
