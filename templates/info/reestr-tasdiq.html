@@ -1,0 +1,32 @@
+{% extends 'docs/dashboard.html' %}
+
+{% block content %}
+
+<main class="app-content">
+    <div class="app-title">
+        <div>
+        <h1><i class="fa fa-th-list pr-2"></i>ПАХТА ЗАВОД</h1>
+        <p>КАБУЛ КЛИШ</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb side">
+        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+        <li class="breadcrumb-item">АДМИН</li>
+        <li class="breadcrumb-item active"><a href="#">ТАШИШ АДМИН</a></li>
+        </ul>
+    </div>
+    <div class="d-none d-sm-block d-md-none d-lg-block">  
+        {% include 'info/reestr-imzo.html' %}
+    </div>  
+    <div class="d-lg-none d-md-block d-sm-block">  
+        <h2 class="ui icon header text-danger">
+            <i class="settings icon"></i>
+            <div class="content">
+              Мобилний Версия мавжуд эмас
+              <div class="sub header text-primary">Бу маълумотларни факатгина планшет ва кампютер экранида кура оласиз Бу платформа мобилни версиясига мослашмаган </div>
+            </div>
+          </h2>
+    </div>  
+       
+   </div>  
+</main>
+{% endblock %}

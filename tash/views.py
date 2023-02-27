@@ -103,7 +103,7 @@ def infores(request):
     date=datenow(date)
     user=request.user.profile
 
-    tash=Tashish.objects.filter(date=date).values('date','nak_num','transport__tr_num','sofVazn','partiya__partiya','ifloslik','namlik','xisobiy','kond','imzo','partiya__nav__nav_name','partiya__sort','partiya__snif',"ptm__name",'id')
+    tash=Tashish.objects.filter(date=date,imzo=False).values('date','nak_num','transport__tr_num','sofVazn','partiya__partiya','ifloslik','namlik','xisobiy','kond','imzo','partiya__nav__nav_name','partiya__sort','partiya__snif',"ptm__name",'id')
     
     context={"tash":tash,'user':user,"date":date}
     return render(request,'info/info.html',context)
@@ -126,3 +126,26 @@ def update(request,pk):
     context={'user':user,'form':form,"tash":tash}
     return render(request,'imzo/imzo.html',context)
     
+
+def tasdiq(request):
+    date=request.POST.get("date")
+    date=datenow(date)
+    user=request.user.profile
+
+    tash=Tashish.objects.filter(date=date,imzo=True).values('date','nak_num','transport__tr_num','sofVazn','partiya__partiya','ifloslik','namlik','xisobiy','kond','imzo','partiya__nav__nav_name','partiya__sort','partiya__snif',"ptm__name",'id')
+    
+    context={"tash":tash,'user':user,"date":date}
+    return render(request,'info/reestr-tasdiq.html',context)
+
+
+def ptm7xl(request):
+    date=request.POST.get("date")
+    date=datenow(date)
+    ptm=request.POST.get('ptm')
+    user=request.user.profile
+    ptm='BOSTON PTM'
+    part=Partiya.objects.filter(tashish__ptm__name=ptm).annotate()
+    print(part)
+    context={'user':user,"date":date}
+    return render(request,'ptm/ptm7xl.html',context)
+

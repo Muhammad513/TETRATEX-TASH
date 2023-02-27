@@ -1,0 +1,54 @@
+<div class="ui form segment">
+    <div class="form pb-3 " style="float:right ;">
+        <form method="post" class="d-flex col-sm-12 col-md-8 col-lg-8">
+            {% csrf_token %}
+            <input type="date" name="date" id="" value="{{date}}" class="">
+            <button class="ui primary button">sana</button>
+        </form>
+    </div>
+    <div class="table-responsive-lg">
+        <table class="table table-sm table-bordered text-center">
+            <thead>
+              <tr>
+                <th rowspan="2" class="align-middle" scope="col">Партия<br>№</th>
+                <th rowspan="2" class="align-middle" scope="col">Бунт<br>№</th>
+                <th rowspan="2" class="align-middle" scope="col">Селекция</th>
+                <th rowspan="2" class="align-middle" scope="col">Сорти <br> Снифи</th>
+                <th rowspan="2" class="align-middle" scope="col">Физик <br>вазн</th>
+                <th rowspan="2" class="align-middle" scope="col">Хисобий <br>вазн</th>
+                <th rowspan="2" class="align-middle" scope="col">Кондицион<br>вазн</th>
+                <th rowspan="2" class="align-middle" scope="col">Уртача<br>ифлослик</th>
+                <th rowspan="2" class="align-middle" scope="col">Уртача <br>намлик</th>
+                <th colspan="2" class="align-middle" scope="col">Корхонага<br>жунатилди</th>
+                <th colspan="2" class="align-middle" scope="col">Колдик</th>
+            </tr>
+            <tr>
+                <th class="align-middle" scope="col">Физик <br></th>
+                <th class="align-middle" scope="col">Кондицион <br>
+                <th class="align-middle" scope="col">Физик<br></th>
+                <th class="align-middle" scope="col">Кондицион</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in tash %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.date|date:'d.m.y'}}</td>
+                <td>{{i.nak_num}}</td>
+                <td>{{i.transport__tr_num}}</td>
+                <td>{{i.partiya__nav__nav_name}}</td>
+                <td>{{i.partiya__sort}}.{{i.partiya__snif}}</td>
+                <td>{{i.partiya__partiya}}</td>
+                <td>{{i.sofVazn}}</td>
+                <td>{{i.ifloslik}}</td>
+                <td>{{i.namlik}}</td>
+                <td>{{i.xisobiy}}</td>
+                <td>{{i.kond}}</td>
+                <td>{{i.ptm__name}}</td>
+                <td ><a href="{% url 'imzo' i.id %}" class="text-danger"><i class="fa fa-stop-circle-o"  style="font-size:22px ;"></i></a></td>
+            </tr>
+            {% endfor %}
+          </table>        
+    </div>
+</div> 
+     
