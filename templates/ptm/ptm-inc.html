@@ -1,11 +1,21 @@
 <div class="ui form segment">
-    <div class="form pb-3 " style="float:right ;">
-        <form method="post" class="d-flex col-sm-12 col-md-8 col-lg-8">
+    <div class="form pb-3">
+        <form method="post">
             {% csrf_token %}
-            <input type="date" name="date" id="" value="{{date}}" class="">
-            <button class="ui primary button">sana</button>
+            <div class="row">
+            <div class="col-2">
+                <select class="ui fluid dropdown" name="ptm">
+                    <option value="{{i.name}}">------</option>
+                    {% for i in choices %}
+                    <option value="{{i.name}}">{{i.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button class="ui primary button">ПТМ</button>
+        </div>
         </form>
     </div>
+    <h6>&ensp;{{ptm}}</h6>
     <div class="table-responsive-lg">
         <table class="table table-sm table-bordered text-center">
             <thead>
@@ -30,25 +40,24 @@
             </tr>
             </thead>
             <tbody>
-            {% for i in tash %}
+            {% for i in part %}
             <tr>
-                <td>{{forloop.counter}}</td>
-                <td>{{i.date|date:'d.m.y'}}</td>
-                <td>{{i.nak_num}}</td>
-                <td>{{i.transport__tr_num}}</td>
-                <td>{{i.partiya__nav__nav_name}}</td>
-                <td>{{i.partiya__sort}}.{{i.partiya__snif}}</td>
-                <td>{{i.partiya__partiya}}</td>
-                <td>{{i.sofVazn}}</td>
-                <td>{{i.ifloslik}}</td>
-                <td>{{i.namlik}}</td>
-                <td>{{i.xisobiy}}</td>
-                <td>{{i.kond}}</td>
-                <td>{{i.ptm__name}}</td>
-                <td ><a href="{% url 'imzo' i.id %}" class="text-danger"><i class="fa fa-stop-circle-o"  style="font-size:22px ;"></i></a></td>
+                <td>{{i.partiya}}</td>
+                <td>{{i.bunt}}</td>
+                <td>{{i.nav__nav_name}}</td>
+                <td>{{i.sort}}.{{i.snif}}</td>
+                <td>{{i.sofVazn|default_if_none:"0"|floatformat:1}}</td>
+                <td>{{i.xisobiy|default_if_none:"0"|floatformat:1}}</td>
+                <td>{{i.kond|default_if_none:"0"|floatformat:1}}</td>
+                <td>{{i.ifloslik|default_if_none:"0"|floatformat:1}}</td>
+                <td>{{i.namlik|default_if_none:"0"|floatformat:1}}</td>
+                <td>{{i.sof|default_if_none:"0"|floatformat:1}}</td>
+                <td>{{i.fizik|default_if_none:"0"|floatformat:1}}</td>
+                <td>{{i.koldiqs|default_if_none:"0"|floatformat:1}}</td>
+                <td>{{i.koldiqk|default_if_none:"0"|floatformat:1}}</td>
+                
             </tr>
             {% endfor %}
           </table>        
     </div>
 </div> 
-     

@@ -1,9 +1,17 @@
 from django.shortcuts import render,redirect
-from .models import Tashish,Transport,Partiya,DisplaySetting,Firma
+from .models import Tashish,Transport,Partiya,DisplaySetting,Firma,Punkt
 from .forms import TashishForm,PartiyaForm,TruckForm,FirmaForm,TashishEdit
 # Create your views here.++
 from .decarators import check_user_able_to_see_page
-from .function import datenow
+from .function import datenow,partiya
+from django.db.models import Sum,Count
+from django.db.models import  F,IntegerField,FloatField
+
+
+
+
+
+
 def home(request):
     user=request.user.profile
     context={'user':user}
@@ -97,7 +105,7 @@ def error_404_view(request,exception):
     return render(request, 'docs/404.html',{'user':user})
 
 
-
+@check_user_able_to_see_page("ADMINS") 
 def infores(request):
     date=request.POST.get("date")
     date=datenow(date)
@@ -107,10 +115,11 @@ def infores(request):
     
     context={"tash":tash,'user':user,"date":date}
     return render(request,'info/info.html',context)
-    
+
+
+@check_user_able_to_see_page("ADMINS")    
 def update(request,pk):
     user=request.user.profile
-    ptm=request.user.punkt
     tash=Tashish.objects.get(id=pk)
     form=TashishEdit(instance=tash)
     
@@ -120,13 +129,10 @@ def update(request,pk):
             form.save()
             return redirect('info')
     
-    
-    
-    
     context={'user':user,'form':form,"tash":tash}
     return render(request,'imzo/imzo.html',context)
     
-
+@check_user_able_to_see_page("ADMINS")
 def tasdiq(request):
     date=request.POST.get("date")
     date=datenow(date)
@@ -139,13 +145,13 @@ def tasdiq(request):
 
 
 def ptm7xl(request):
+    user=request.user.profile
     date=request.POST.get("date")
     date=datenow(date)
     ptm=request.POST.get('ptm')
-    user=request.user.profile
-    ptm='BOSTON PTM'
-    part=Partiya.objects.filter(tashish__ptm__name=ptm).annotate()
-    print(part)
-    context={'user':user,"date":date}
+    choices=Punkt.objects.all().values('name')
+    part=partiya(Partiya,ptm,date)
+    
+    context={'user':user,"date":date,"user":user,'part':part,"choices":choices,"ptm":ptm}
     return render(request,'ptm/ptm7xl.html',context)
 
